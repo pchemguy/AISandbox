@@ -2,7 +2,8 @@
 
 > [!WARNING]
 > 
-> To use Codex skill installer, internet access must be enabled in the environment settings.
+> - To use Codex `skill-installer`, internet access must be enabled in the environment settings.
+> - Web Codex installs skill into the sandbox. Whether `skill-installer` can install into repo is unclear.
 
 # Commands
 
@@ -15,7 +16,6 @@
 `List skills`: list skills available from https://github.com/openai/skills/tree/main/skills/.curated
 
 ## Install Skill from OpenAI Repo
-
 
 |                     |                                                                                |
 | ------------------- | ------------------------------------------------------------------------------ |
