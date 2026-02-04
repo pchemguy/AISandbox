@@ -62,12 +62,6 @@ Before writing or modifying any files, you must:
     - root `AGENTS.md` (this file)
     - any existing files at repo root:
         - README.md
-        - DESIGN.md
-        - ARCHITECTURE.md
-        - DEV_STRATEGY.md
-        - PLAN.md
-        - PROJECT.md
-        - TEST_FAILURE_TRIAGE.md
     - additional referenced files.
 2. Locate and read `pyproject.toml`  at the repo root.
 3. Determine package name (`<package_name>`)
