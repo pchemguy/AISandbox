@@ -25,7 +25,7 @@ ruff check --fix "{path/to/dir}"
 
 ## Skills
 
-Repo-level skills are placed in the standard location under `.codex/skills/`.  Agent must load these skills making sure they are readily available. If user requests to list registered skills, repo skills must also be listed, but clearly separated from other sources.
+Repo-level skills are placed in the standard location under `.codex/skills/`.  Agent must load these skills making sure they are readily available. If user requests to list active skills, repo skills must also be listed, but clearly separated from other sources.
 
 ## Sample Repo Structure
 
