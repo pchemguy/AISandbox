@@ -4,9 +4,17 @@
 > 
 > To use Codex skill installer, internet access must be enabled in the environment settings.
 
-# Install Skills
+# Commands
 
-## OpenAI Repo
+## List Installed Skills
+
+`List installed skills`
+
+## List Available Skills
+
+`List skills`: list skills available from https://github.com/openai/skills/tree/main/skills/.curated
+
+## Install Skill from OpenAI Repo
 
 
 |                     |                                                                                |
@@ -16,6 +24,7 @@
 | **Prompt Template** | `$skill-installer install the {SKILL_NAME} skill from the {COLLECTION} folder` |
 
 where
+
 - `$skill-installer`: calls a preinstalled `.system` skill (`.system/skill-installer`)
 - `{COLLECTION}`: either `.experimental` or `.curated` as appropriate.
 - `{SKILL_NAME}`: skill name and name of subfolder.
