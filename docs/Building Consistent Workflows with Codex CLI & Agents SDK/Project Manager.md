@@ -14,7 +14,9 @@ Convert the input task list into three project-root files the team will execute 
 
 `TASK_LIST.md`: Read from project root.
 
-## Deliverables (from PM, write in project root)
+## Deliverables
+
+Write the following files to `{PROJECT_ROOT}`:
 
 - `REQUIREMENTS.md`: concise summary of product goals, target users, key features, and constraints.
 - `TEST.md`: tasks with {Owner} tags (Designer, Frontend, Backend, Tester) and clear acceptance criteria.
