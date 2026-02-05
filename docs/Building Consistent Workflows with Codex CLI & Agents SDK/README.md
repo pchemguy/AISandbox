@@ -3,6 +3,7 @@ URLs:
   - https://developers.openai.com/cookbook/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk.md
   - https://cookbook.openai.com/examples/codex/codex_mcp_agents_sdk/building_consistent_workflows_codex_cli_agents_sdk
   - https://github.com/openai/openai-cookbook/tree/main/examples/codex/codex_mcp_agents_sdk
+  - https://chatgpt.com/c/6984b73c-d634-838a-953e-3b681a48e921
 ---
 
 # Building Consistent Workflows with Codex CLI & Agents SDK

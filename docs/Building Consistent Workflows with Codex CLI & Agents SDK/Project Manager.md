@@ -1,4 +1,5 @@
 ---
+name: Project Manager
 description: Breaks down task list (TASK_LIST.md), creates requirements, and coordinates work.
 ---
 

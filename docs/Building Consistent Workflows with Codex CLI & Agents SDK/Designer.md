@@ -1,4 +1,5 @@
 ---
+name: Designer
 description: Produces UI/UX specifications
 ---
 

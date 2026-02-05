@@ -1,0 +1,3 @@
+**Summary**  
+
+Design and implement _Bug Busters_, a lightweight, single-screen browser game delivered as a self-contained `index.html` file using only vanilla HTML, CSS, and JavaScript. The game challenges the player to click a moving bug to accumulate points within a fixed 20-second session, after which the final score is displayed. The project emphasizes simplicity, responsiveness, and zero external dependencies, with an optional extension to submit scores to a minimal backend service and display a top-10 leaderboard.

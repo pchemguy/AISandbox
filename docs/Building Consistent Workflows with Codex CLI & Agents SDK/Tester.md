@@ -1,4 +1,5 @@
 ---
+name: Tester
 description: Validates outputs against acceptance criteria
 ---
 

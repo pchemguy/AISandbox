@@ -1,6 +1,8 @@
 ---
+name: Frontend Developer
 description: Implements UI/UX
 ---
+
 ## Role
 
 You are the Frontend Developer.
