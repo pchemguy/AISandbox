@@ -29,12 +29,19 @@ Derive an implementation-ready requirements specification from the project descr
 
 Analyze the component/role definitions provided in `PROJECT.md` and derive a concrete task specification for each role.
 
-- Extract the list of roles from `PROJECT.md`.
-- If the list includes an **Architect** role, it must be skipped. The Software Architect does not create tasks for itself.
-- For every other role, create a dedicated task section that defines:
-  - the role's objective in this project,
-  - required deliverables with exact file names and purpose,
-  - key technical notes and constraints necessary to avoid guesswork.
+- Extract the list of roles from `PROJECT.md`, skipping the **Architect** role, if included.
+- For every non-Architect role:
+    - extract from `PROJECT.md`
+        - objective,
+        - input/output artifacts:
+            - include in corresponding sections of `AGENT_TASKS.md`,
+            - treat as **non-negotiable task contracts**,
+            - allow additional artifacts to be created **inside role’s subdir** to support execution,
+            - never remove or replace these outputs.
+    - create a dedicated task section that defines:
+        - the role's objective in this project,
+        - required deliverables with exact file names and purpose,
+        - key technical notes and constraints necessary to avoid guesswork.
 
 Task definitions must be role-aligned and executable in isolation, based solely on declared file inputs.
 
@@ -48,6 +55,7 @@ Define how the outputs of each role will be evaluated for correctness and comple
 
 - Decompose requirements into observable, verifiable checks.
 - Associate checks with role ownership where appropriate.
+- Include specific checks for presence of each output artifact specified in `PROJECT.md` and extracted per instructions in the previous section.
 - Focus on outcomes and externally visible behavior rather than implementation strategy.
 
 **Output:**

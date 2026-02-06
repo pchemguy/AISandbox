@@ -23,13 +23,15 @@ This document provides
 
 ## Components
 
-| ROLE          | OBJECTIVE                                                          |
-| ------------- | ------------------------------------------------------------------ |
-| **Architect** | Generates development plan and requirements from                   |
-| **Designer**  | Create a one-page UI/UX spec and basic wireframe.                  |
-| **Frontend**  | Implement the page and app logic.                                  |
-| **Backend**   | Implement a minimal API (GET /health, GET/POST /scores).           |
-| **Tester**    | Write a quick test plan and a simple script to verify core routes. |
+| ROLE          | OBJECTIVE                                  | INPUT ARTIFACTS                                              | OUTPUT ARTIFACTS                               |
+| ------------- | ------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------- |
+| **Architect** | Generate requirements and task definitions | `PROJECT.md`                                                 | `REQUIREMENTS.md`, `AGENT_TASKS.md`, `TEST.md` |
+| **Designer**  | Create UI/UX spec and wireframe            | `REQUIREMENTS.md`,` AGENT_TASKS.md`                          | `design/design_spec.md`                        |
+| **Frontend**  | Implement page and application logic       | `REQUIREMENTS.md`, `AGENT_TASKS.md`, `design/design_spec.md` | `frontend/index.html`                          |
+| **Backend**   | Implement minimal API                      | `REQUIREMENTS.md`, `AGENT_TASKS.md`                          | `backend/server.js`                            |
+| **Tester**    | Define and execute validation checks       | `TEST.md`, all produced artifacts                            | `tests/TEST_PLAN.md`                           |
+
+Primary outputs define the minimum artifacts required to consider a role complete. Additional role-specific artifacts may be created if necessary.
 
 ## Preferences and Constraints
 
