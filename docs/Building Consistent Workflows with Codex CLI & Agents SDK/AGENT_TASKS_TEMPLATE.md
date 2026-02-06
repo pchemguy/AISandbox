@@ -30,12 +30,12 @@ These constraints apply to all roles unless a role section explicitly tightens t
 
 ### Objective
 
-{1ï¿½3 sentences. Derived from `PROJECT.md` Components table, refined for executability.}
+{1-3 sentences. Derived from `PROJECT.md` Components table, refined for executability.}
 
 ### Allowed Work Area
 
 - **Directory**: `{relative_dir}/`
-- **May create additional files here**: Yes (only if needed to complete the roleï's task)
+- **May create additional files here**: Yes (only if needed to complete the role's task)
 - **May modify files outside this directory**: No (except the required primary outputs if they live elsewhere, but prefer local)
 
 ### Inputs
@@ -51,15 +51,15 @@ If any required input is missing or contradictory, stop and report to the Orches
 
 These outputs are mandatory. Do not substitute other artifacts for them.
 
-- `{PROJECT_ROOT}/{path/to/required_output_1}` ï¿½ {purpose}
-- `{PROJECT_ROOT}/{path/to/required_output_2}` ï¿½ {purpose}
+- `{PROJECT_ROOT}/{path/to/required_output_1}` - {purpose}
+- `{PROJECT_ROOT}/{path/to/required_output_2}` - {purpose}
 
 ### Auxiliary Artifacts (Optional)
 
 Only create these if necessary to complete the task or to make it auditable:
 
-- `{relative_dir}/{optional_file}` ï¿½ {purpose}
-- (If none are expected, write ï¿½Noneï¿½.)
+- `{relative_dir}/{optional_file}` - {purpose}
+- (If none are expected, write "None".)
 
 ### Task Breakdown
 
