@@ -45,7 +45,7 @@ Repo-level skills are placed in the standard location under `.agent/skills/`.  A
     test_parser.py
     test_parser_fp.py
     test_cli_smoke.py
-.codex/skills/
+.agent/skills/
 pyproject.toml
 AGENTS.md
 DEV_STRATEGY.md
