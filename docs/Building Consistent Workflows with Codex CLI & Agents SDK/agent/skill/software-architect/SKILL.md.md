@@ -48,6 +48,7 @@ Task definitions must be role-aligned and executable in isolation, based solely 
 **Output:**
 
 - `{PROJECT_ROOT}/AGENT_TASKS.md`
+    - Use `{PROJECT_ROOT}/AGENT_TASKS_TEMPLATE.md`, extending it as necessary.
 
 ### 3. Acceptance Criteria Definition
 
@@ -66,9 +67,10 @@ Define how the outputs of each role will be evaluated for correctness and comple
 
 The Software Architect must read the following files from the project root:
 
-- `PROJECT.md`
 - `AGENTS.md`
 - `DEV_STRATEGY.md`
+- `PROJECT.md`
+- `AGENT_TASKS_TEMPLATE.md`
 - `README.md` (if present)
 
 These files constitute the complete and authoritative input context.
