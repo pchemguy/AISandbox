@@ -183,3 +183,41 @@ Priority order:
 
 If `PROJECT.md` conflicts with orchestrator/skills, the Orchestrator must stop and request clarification
 or record an explicit decision before continuing.
+
+
+
+## Skill Contract (Required)
+
+Every skill in `.agent/skills/` must be written so it can be invoked independently.
+
+Each skill must define:
+
+- **Name**: stable identifier used by the Orchestrator
+- **Objective**: what it is responsible for producing
+- **Inputs**: explicit file paths relative to repo root (authoritative source of truth)
+- **Deliverables**: explicit file paths the skill must create/update
+- **Constraints**:
+  - Do not change unrelated files.
+  - Do not invent requirements that are not in the Inputs.
+  - If information is missing or contradictory, stop and report issues (see below).
+    
+    
+## Orchestrator Contract (Required)
+
+Orchestrator prompts live in `orchestrator/` and are the only place workflow logic is defined.
+
+Orchestrator responsibilities:
+
+1. **Select workflow** based on `PROJECT.md` scope (frontend-only vs optional backend).
+2. **Invoke skills** with explicit Inputs/Deliverables and any run constraints.
+3. **Gate progress** after each skill:
+   - verify required files exist
+   - verify the files minimally satisfy intent (e.g., non-empty, contains required sections)
+   - read any skill reports and resolve via:
+     - user intervention, or
+     - re-run the same skill with clarified instruction, or
+     - explicit recorded assumptions (only the orchestrator may choose to accept defaults)
+
+4. **Human intervention friendliness**
+   - Orchestrator must support "pause points" after each gate, so the workflow can be executed
+     stepwise with minimal overhead.
