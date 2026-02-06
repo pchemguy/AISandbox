@@ -8,7 +8,7 @@ URLs:
 
 # Building Consistent Workflows with Codex CLI & Agents SDK
 
-### Ensuring Repeatable, Traceable, and Scaleable Agentic Development
+### Ensuring Repeatable, Traceable, and Scalable Agentic Development
 
 ## Introduction
 
