@@ -83,7 +83,7 @@ Before writing or modifying any files, you must:
     * shared fixtures or helpers
 9. Determine how tests are intended to be executed in this repository.
 
-**If required files are inaccessible** → agent must stop further task processing, output “BLOCKED” + list missing artifacts.
+**If required files are inaccessible** → agent must stop further task processing, output "BLOCKED" + list missing artifacts.
 **If files exist but are ambiguous** → agent must proceed with the *repo's dominant convention* and explicitly state assumptions.
 
 ## Editing Constraints

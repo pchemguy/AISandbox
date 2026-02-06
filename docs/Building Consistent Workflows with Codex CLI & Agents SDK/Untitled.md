@@ -26,7 +26,7 @@
 
 ## Revised `AGENTS.md`
 
-~~~
+
 ---
 name: AGENTS.md
 ---
@@ -221,3 +221,256 @@ Orchestrator responsibilities:
 4. **Human intervention friendliness**
    - Orchestrator must support "pause points" after each gate, so the workflow can be executed
      stepwise with minimal overhead.
+
+
+---
+---
+
+Good — this is already structurally sound. What you need now is **tightening, de-ambiguation, and enforcement language**, not conceptual expansion. Below I’ll:
+
+1. Refine **AGENTS.md** so it is *strict, operational, and unambiguous*.
+2. Refine **DEV_STRATEGY.md** to:
+
+   * remove redundancy,
+   * clearly define the **single-agent + skills** model,
+   * eliminate any remaining multi-agent ambiguity,
+   * formalize constraints (no coupling, file-based dataflow).
+
+I will **not** introduce new concepts unless necessary.
+
+---
+
+## Refined `AGENTS.md`
+
+Your current version is good but slightly permissive and informal. The goal of `AGENTS.md` is to act as a **hard execution contract**.
+
+### Key improvements
+
+* Make “BLOCKED” behavior precise and testable
+* Clarify that *no file writes* are allowed before discovery
+* Explicitly state that skills and orchestrator must obey this file
+
+### Revised version
+
+~~~
+---
+name: AGENTS.md
+---
+
+# Mandatory Project Discovery Protocol
+
+This file defines **mandatory execution constraints** for all agent activity
+(orchestrator or skill-level). These rules are non-negotiable.
+
+## Mandatory Project Discovery Steps
+
+Before writing, modifying, or deleting **any** files, the agent must:
+
+1. Read and operationalize the following files (if present):
+   - `AGENTS.md` (this file)
+   - `README.md`
+   - `PROJECT.md`
+   - `DEV_STRATEGY.md`
+
+2. Discover available skills:
+   - Enumerate `.agent/skills/`
+   - Identify skill names and their declared input/output contracts
+
+3. Identify the active orchestration entrypoint:
+   - Enumerate `orchestrator/`
+   - Determine which orchestrator prompt is being executed
+
+## Blocking Conditions
+
+If **any required file** listed above is missing, inaccessible, or unreadable:
+
+- The agent **must not** perform any task execution.
+- The agent **must not** write or modify any files.
+- The agent must immediately stop and output:
+
+```
+BLOCKED
+
+Missing or inaccessible artifacts:
+
+* <list of files>
+```
+
+```
+
+This makes `AGENTS.md` behave like a **runtime guardrail**, not documentation.
+
+---
+
+## Refined `DEV_STRATEGY.md`
+
+Your current text is conceptually correct but:
+
+* overly verbose,
+* partially repetitive,
+* still framed in “multi-agent explanation mode” rather than **execution doctrine**.
+
+We want this to read like a **design spec**, not a blog explanation.
+
+### Key improvements
+
+* Collapse explanation into **normative rules**
+* Explicitly forbid agent-style delegation
+* Formalize the **hub-and-spoke topology**
+* Clarify what “skills may refer to other skills” actually means (this is currently ambiguous)
+
+---
+
+### Revised `DEV_STRATEGY.md`
+
+```markdown
+---
+name: DEV_STRATEGY.md
+---
+
+# Agentic Repo Protocol (Single Orchestrator + Skills)
+
+## Purpose
+
+This repository defines a **single-agent execution framework** that emulates
+multi-agent development workflows using **agent skills** coordinated by a
+top-level **Orchestrator**.
+
+The design intentionally avoids true multi-agent execution, MCP servers, or
+direct agent-to-agent interaction.
+
+## Core Execution Model
+
+- There is **exactly one active agent context** at any time.
+- This agent is instructed by an **Orchestrator prompt** to execute a workflow.
+- The Orchestrator coordinates work by invoking **skills**, not agents.
+
+### Orchestrator
+
+The Orchestrator is responsible for:
+
+- Reading `PROJECT.md` and selecting the appropriate workflow.
+- Defining the execution order of skills.
+- Supplying each skill with:
+  - explicit input files,
+  - explicit output expectations,
+  - any gating or stopping conditions.
+- Verifying that required artifacts exist before advancing the workflow.
+- Deciding whether to:
+  - re-run a skill with clarification,
+  - stop for human intervention,
+  - accept and record explicit assumptions.
+
+The Orchestrator is the **only component** allowed to define or alter workflow
+structure.
+
+### Skills (Task Skills)
+
+Skills replace task-specific agents.
+
+Each skill is:
+
+- A deterministic task executor.
+- Invoked exclusively by the Orchestrator.
+- Defined by:
+  - declared inputs (files in the project directory),
+  - declared outputs (files to be written),
+  - explicit constraints.
+
+Skills must not:
+
+- Invoke or reference other skills as active collaborators.
+- Assume the existence of artifacts not listed as inputs.
+- Make workflow decisions or advance execution phases.
+
+### Data Flow
+
+- All information passed between workflow phases must be persisted as
+  **file artifacts** within the project directory.
+- No hidden state, memory-based passing, or implicit context sharing is allowed.
+- File artifacts are the sole coordination mechanism.
+
+## Topology Constraint
+
+The workflow follows a **star (hub-and-spoke) topology**:
+
+- The Orchestrator is the hub.
+- Skills are spokes.
+- There is no direct communication between spokes.
+
+This constraint is intentional and must not be relaxed.
+
+## Project Agnosticism
+
+The workflow must remain project-agnostic.
+
+- All project-specific information is supplied via `PROJECT.md`.
+- Swapping `PROJECT.md` must be sufficient to produce a different single-page
+  browser game without modifying:
+  - skills,
+  - orchestration logic,
+  - repository structure.
+
+## Bootstrapping Rule
+
+Because execution occurs within a single agent context:
+
+- All bootstrapping information must be available via files in the repository.
+- Skills must rely exclusively on discovered artifacts and declared inputs.
+- No skill may rely on transient conversational context.
+
+## Skill Reuse and Composition
+
+Skills may **reference the existence** of other skills only in a descriptive or
+documentation sense.
+
+Skills must not:
+- delegate work to other skills,
+- assume that another skill has already run unless the Orchestrator explicitly
+  guarantees it via input artifacts.
+
+## Summary
+
+This framework prioritizes:
+
+- determinism,
+- auditability,
+- minimal coupling,
+- human-intervenable execution.
+
+It is designed to support both:
+- fully automated Codex-driven runs, and
+- stepwise, human-gated execution with minimal overhead.
+```
+
+---
+
+## Why this is now “framework-grade”
+
+At this point, you have:
+
+* A **hard execution contract** (`AGENTS.md`)
+* A **clear architectural doctrine** (`DEV_STRATEGY.md`)
+* A clean separation between:
+
+  * *what the workflow is* (orchestrator),
+  * *what work is done* (skills),
+  * *what varies per project* (`PROJECT.md`)
+
+This is strong enough that:
+
+* you can swap `PROJECT.md`,
+* you can pause/restart orchestration,
+* you can later automate via containers or PR generation,
+* and you have eliminated the conceptual confusion present in the original article.
+
+### Next logical steps (when you’re ready)
+
+1. Define a **PROJECT.md schema/template**
+2. Define one **canonical orchestrator entrypoint** (e.g. `orchestrator/main.md`)
+3. Normalize a **skill header format** so skills are mechanically discoverable
+
+If you want, next we can:
+
+* harden `PROJECT.md` into a strict, automation-friendly template, or
+* refactor one of your skills (e.g., Designer) to be maximally reusable across games.
