@@ -1,37 +1,42 @@
 ---
 name: software-architect
-description: Transforms software project brief into executable architectural specifications for the workflow. Use this skill when a new project is initialized or when the project brief changes and downstream skills require precise, file-based contracts (requirements, task definitions, acceptance criteria).
+description: Analyzes project description to derive an executable, role-aligned development specification. Use this skill to translate a high-level project definition and component breakdown into concrete requirements, per-role task contracts, and acceptance criteria for downstream skills.
 ---
 
 # Software Architect
 
 ## Overview
 
-This skill converts a high-level project brief (`PROJECT.md`) into a minimal set of precise, file-based specifications that define what the workflow will build and how downstream skills should operate.
+This skill translates a high-level project definition (`PROJECT.md`) into a minimal set of precise, file-based specifications that define what the system will build and how each role-specific skill should operate.
 
-The Software Architect is responsible for producing stable architectural contracts, not for orchestrating execution or implementing features.
+The Software Architect is responsible for requirements synthesis and task decomposition, not for workflow orchestration or implementation.
 
 ## Core Capabilities
 
 ### 1. Requirements Synthesis
 
-Translate the project brief into a concise, implementation-ready requirements document.
+Derive an implementation-ready requirements specification from the project description.
 
-- Identify product goals, intended users, and scope boundaries.
-- Extract functional requirements and non-functional constraints.
-- Record any necessary assumptions explicitly and conservatively.
+- Identify product goals, intended users, scope boundaries, and constraints.
+- Incorporate all preferences and constraints defined in `PROJECT.md`.
+- Record any required assumptions explicitly and conservatively.
 
 **Output:**
 
 - `{PROJECT_ROOT}/REQUIREMENTS.md`
 
-### 2. Task and Role Specification
+### 2. Role and Task Decomposition
 
-Define the responsibilities, deliverables, and constraints for each downstream role or skill that will participate in the workflow.
+Analyze the component/role definitions provided in `PROJECT.md` and derive a concrete task specification for each role.
 
-- Specify exact file names and expected outputs.
-- Provide technical notes sufficient to avoid guesswork.
-- Avoid prescribing workflow order or execution strategy.
+- Extract the list of roles from `PROJECT.md`.
+- If the list includes an **Architect** role, it must be skipped. The Software Architect does not create tasks for itself.
+- For every other role, create a dedicated task section that defines:
+  - the role's objective in this project,
+  - required deliverables with exact file names and purpose,
+  - key technical notes and constraints necessary to avoid guesswork.
+
+Task definitions must be role-aligned and executable in isolation, based solely on declared file inputs.
 
 **Output:**
 
@@ -39,11 +44,11 @@ Define the responsibilities, deliverables, and constraints for each downstream r
 
 ### 3. Acceptance Criteria Definition
 
-Define how correctness and completeness will be evaluated.
+Define how the outputs of each role will be evaluated for correctness and completeness.
 
-- Decompose requirements into verifiable checks.
-- Assign ownership tags (e.g., Designer, Frontend, Backend, Tester) for traceability.
-- Focus on observable outcomes, not implementation details.
+- Decompose requirements into observable, verifiable checks.
+- Associate checks with role ownership where appropriate.
+- Focus on outcomes and externally visible behavior rather than implementation strategy.
 
 **Output:**
 
@@ -58,7 +63,7 @@ The Software Architect must read the following files from the project root:
 - `DEV_STRATEGY.md`
 - `README.md` (if present)
 
-These files are the sole source of truth. No external context should be assumed.
+These files constitute the complete and authoritative input context.
 
 ## Deliverables
 
@@ -73,24 +78,26 @@ No other files or directories may be created or modified by this skill.
 ## Constraints and Rules
 
 - Do not define workflow order, execution phases, or orchestration logic.
+- Do not create tasks for the Architect role.
+- Do not introduce roles, components, or features not present in `PROJECT.md`.
 - Do not create folders or write outside the project root.
-- Do not introduce features, roles, or scope not implied by `PROJECT.md`.
 - Resolve ambiguities only when necessary, using minimal and reasonable assumptions.
 - All assumptions must be explicitly recorded in `REQUIREMENTS.md`.
 
 ## Failure and Blocking Behavior
 
-If the input brief is insufficient, contradictory, or missing required information:
+If `PROJECT.md` is missing, incomplete, internally inconsistent, or insufficient to derive executable tasks:
 
 - Do not speculate or invent requirements.
-- Clearly identify the blocking issues.
-- Stop execution and report the problem in the generated files or via an explicit BLOCKED response, as defined in `AGENTS.md`.
+- Identify the blocking issues explicitly.
+- Stop execution and report `BLOCKED`, following the protocol defined in `AGENTS.md`.
 
 ## When to Use This Skill
 
 Use the Software Architect skill when:
 
 - Initializing a new project from `PROJECT.md`.
-- Updating specifications after a significant change to the project brief.
-- Downstream skills require clarified contracts, inputs, or acceptance criteria.
+- Updating task definitions or requirements after changes to project scope or components.
+- Downstream skills require clarified, role-aligned task contracts and acceptance criteria.
 
+Do not use this skill for orchestration, implementation, or testing activities.
