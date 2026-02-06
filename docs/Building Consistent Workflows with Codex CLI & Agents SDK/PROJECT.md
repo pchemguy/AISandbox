@@ -10,16 +10,6 @@ This document provides
 - `## Components`: High-level project decomposition.
 - `## Preferences and Constraints`: Development preferences and constraints.
 
-Note: development of individual `## Components` may be "delegated" using different mechanisms:
-
-- **Multi-agent environment**:
-    - Instructions form - task agent prompt.
-    - Delegation to focused task agents with separate environments and contexts.
-- **Single-agent environment**:
-    - Instructions form - agentic skill.
-    - All components are actually executed by the same agent within the same environment and common context.
-    - Alternatively, the workflow can be split, e.g., at component boundary. Then individual components may still be executed by different agents, but each agent would still operate within a single agent environment. When more than one agent is used, this approach still does not rely on inter-agent interaction: execution control may be dispatched manually or using a deterministic script (which may potentially dispatch AI calls using "conventional" non-MCP API).
-
 ## Target
 
 **Objective**: Develop a tiny browser game to showcase a multi-agent workflow. 
