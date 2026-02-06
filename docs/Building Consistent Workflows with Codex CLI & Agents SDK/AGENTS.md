@@ -9,8 +9,9 @@ Before writing, modifying, or deleting **any** files, the agent must:
 1. Read and operationalize the following files (if present):
     - `AGENTS.md` (this file)
     - `README.md`
-    - `PROJECT.md`
     - `DEV_STRATEGY.md`
+    - `PROJECT.md`
+    - `AGENT_TASKS_TEMPLATE.md`
 2. Discover available skills:
     - Enumerate `.agent/skills/`
 
