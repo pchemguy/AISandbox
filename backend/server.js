@@ -3,24 +3,24 @@ const http = require("http");
 const PORT = process.env.PORT || 3000;
 const scores = [];
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 function sendJson(res, statusCode, payload) {
   const body = JSON.stringify(payload);
   res.writeHead(statusCode, {
     "Content-Type": "application/json",
     "Content-Length": Buffer.byteLength(body),
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
+    ...CORS_HEADERS,
   });
   res.end(body);
 }
 
 function handleOptions(res) {
-  res.writeHead(204, {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  });
+  res.writeHead(204, CORS_HEADERS);
   res.end();
 }
 
