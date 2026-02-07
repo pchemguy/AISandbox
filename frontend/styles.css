@@ -1,0 +1,54 @@
+:root {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #1f2933;
+  background: #f5f7fa;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.game {
+  width: min(720px, 95vw);
+  display: grid;
+  gap: 16px;
+}
+
+.game__header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.game__play-area {
+  position: relative;
+  height: 360px;
+  border: 2px dashed #94a3b8;
+  border-radius: 12px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.bug {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f97316;
+  border: 2px solid #ea580c;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.2);
+}
+
+.game__message {
+  text-align: center;
+  background: #e2e8f0;
+  padding: 16px;
+  border-radius: 12px;
+}

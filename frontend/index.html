@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bug Busters</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="game__header">
+        <div class="game__score" id="score">Score: 0</div>
+        <div class="game__timer" id="timer">Time: 20</div>
+      </header>
+
+      <section class="game__play-area" id="playArea">
+        <button class="bug" id="bug" aria-label="Bug"></button>
+      </section>
+
+      <section class="game__message" id="message" aria-live="polite" hidden>
+        <h2>Game Over</h2>
+        <p id="finalScore">Final Score: 0</p>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
