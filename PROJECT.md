@@ -33,9 +33,19 @@ This document provides
 
 Primary outputs define the minimum artifacts required to consider a role complete. Additional role-specific artifacts may be created if necessary.
 
+## Execution and Completion Notes
+
+- **Target technology**:
+    - Browser-based single-page application implemented using vanilla HTML, CSS, and JavaScript.
+- **Execution assumptions**: The frontend is expected to run as a static single-page artifact. If a backend is implemented, it is expected to run locally and be accessed via localhost.
+- **Optional components**: Backend functionality is optional. If backend artifacts are not produced, frontend behavior must degrade gracefully without failure.
+- **Project completion**:
+  Game
+    - Opens in a browser.
+    - Can be played end-to-end for a full session.
+    - Produces no runtime errors under normal use.
+
 ## Preferences and Constraints
 
-- No external database - memory storage is fine.
-- Prefer vanilla HTML, CSS, and JavaScript.
 - Keep everything readable for beginners; no frameworks required.
 - All outputs should be small files saved in clearly named folders.
