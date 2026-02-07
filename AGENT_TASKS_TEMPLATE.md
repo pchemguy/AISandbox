@@ -45,7 +45,7 @@ The following files are the only authoritative inputs for this role:
 - `{PROJECT_ROOT}/...`
 - `{PROJECT_ROOT}/...`
 
-If any required input is missing or contradictory, stop and report to the Orchestrator.
+If any required input is missing or contradictory, stop and report to the Controller.
 
 ### Primary Deliverables
 
