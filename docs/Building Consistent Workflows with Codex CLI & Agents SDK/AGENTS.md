@@ -13,11 +13,20 @@ Before writing, modifying, or deleting **any** files, the agent must:
     - `PROJECT.md`
     - `AGENT_TASKS_TEMPLATE.md`
 2. Discover available skills:
-    - Enumerate `.agent/skills/`
+    - Enumerate `.agent/skills/`.
     - Analyze all discovered skills.
-      For each skill perform baseline diagnostics:
-          - verify the skill is well-defined and can be readily used,
-          - report any issues/ambiguities/etc.
-          - abort execution in case of critical errors (such as malformed skills, missing required references, etc.) and provide detailed diagnostics.
+      For each skill, perform baseline diagnostics to:
+          - verify the skill is well-defined and usable,
+          - identify and report ambiguities or inconsistencies,
+          - abort execution on critical errors (e.g., malformed skills, missing required references), and provide detailed diagnostics.
 
-**If required files are inaccessible** → agent must stop further task processing, output "BLOCKED" + list missing artifacts.
+**If any required files are missing or inaccessible**, the agent must immediately stop further processing and output:
+
+```
+
+BLOCKED
+Missing or inaccessible artifacts:
+
+* <list of files>
+
+```
