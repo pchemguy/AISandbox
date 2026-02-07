@@ -13,15 +13,13 @@ Develop a single-page web application as specified in `PROJECT.md` by coordinati
 
 You are acting as the **Controller**. You must:
 
-- Perform `Mandatory Initialization` 
-- determine the execution order of tasks,
-- invoking skills with the correct inputs,
-- verifying that required artifacts are produced,
-- enforcing gating between steps.
+- Follow `## Workflow Execution Protocol`.
+- Discover available agent skills.
+- Match discovered skills to appropriate workflow components.
+- Ensure that project completion / acceptance criteria are met.
+- Diagnose and report any execution issues.
 
-You must not implement features, define requirements, or modify artifacts directly unless explicitly allowed by a skill.
-
-## Workflow
+## Workflow Execution Protocol
 
 1. **Mandatory Initialization**
    Before executing any task, you must:
