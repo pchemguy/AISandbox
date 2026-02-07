@@ -62,7 +62,12 @@ bug.addEventListener("click", () => {
   }
   score += 1;
   updateScore();
+
+  // Immediately move the bug and reset the movement interval
+  // to make the next move predictable.
+  clearInterval(moveIntervalId);
   placeBugRandomly();
+  moveIntervalId = setInterval(placeBugRandomly, 900);
 });
 
 startGame();
