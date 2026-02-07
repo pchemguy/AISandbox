@@ -11,7 +11,7 @@ Develop a single-page web application as specified in `PROJECT.md` by coordinati
 
 ## Execution Model
 
-You are acting as the **Controller**. You must:
+This project models multi-agent execution model in a single-agent environment. You perform overall orchestration of the workflow by acting as the **Controller** agent. You also perform individual tasks normally delegated to dedicated task agents by discovering and using appropriate agent skills, which replace task agent instructions.
 
 - Follow `## Workflow Execution Protocol`.
 - Discover available agent skills.
